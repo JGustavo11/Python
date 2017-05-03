@@ -20,13 +20,27 @@ displayboard()
 
 while True:
     print 'Choose from 0 - 8'
+    #pause the loop for raw iput
     input = raw_input("Selection:  ")
     print "\n"
     #if they type letter, it will be cast into int
     input = int(input)
-
+    #if not x or o, add x
     if board[input] !='x' and board[input] !='o':
         board[input] = 'x'
+    # Have computer randomly generate a place
+    # create a loop
+    openspot = True
+
+    while openspot:
+        random.seed()
+        computer = random.randint(0,8)
+        # if not o or x, the add o
+        if board[computer] != 'o' and board[computer] != 'x':
+            board[computer] = 'o'
+            #false to jump out of while loop 
+            openspot = False
+
     #validate they dont choose the same number twice
     # if its twice, they display error
     else:
