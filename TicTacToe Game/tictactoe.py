@@ -47,6 +47,7 @@ def compareall(char):
         return True
     if check(char,6,4,2):
         return True
+
 #call displayboard to show initial position of fresh game
 displayboard()
 
@@ -63,7 +64,7 @@ while True:
 
         if compareall('x') == True:
             print "----You win!---"
-            break:
+            break;
     # Have computer randomly generate a place
     # create a loop
     openspot = True
@@ -77,7 +78,7 @@ while True:
 
             if compareall('o')== True:
                 print "Computer Wins! You lose!"
-                break:
+                break;
             #false to jump out of while loop 
             openspot = False
 
