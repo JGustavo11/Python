@@ -3,6 +3,7 @@
 #3x3
 #I used X's and O's as place holders
 #create the board (as list)
+import random
 board = [0,1,2,
          3,4,5,
          6,7,8]
@@ -15,6 +16,37 @@ def displayboard():
     print '----------'
     print board[6],'|',board[7],'|',board[8]
     print '----------'
+
+#function to check winner
+def check(char,place1,place2,place3):
+    if board[place1] == char and board[place2] == char and board[place3] == char:
+        return True
+
+#check all possible ways of wiining
+def compareall(char):
+    #winner horizontally
+    if check(char,0,1,2):
+        return True
+    if check(char,3,4,5):
+        return True
+    if check(char,6,7,8):
+        return True
+
+    
+    #winner vertically   
+    if check(char,0,3,6):
+        return True
+    if check(char,1,4,7):
+        return True
+    if check(char,2,5,8):
+        return True
+
+    
+    #Winner disagonally
+    if check(char,0,4,8):
+        return True
+    if check(char,6,4,2):
+        return True
 #call displayboard to show initial position of fresh game
 displayboard()
 
@@ -28,6 +60,10 @@ while True:
     #if not x or o, add x
     if board[input] !='x' and board[input] !='o':
         board[input] = 'x'
+
+        if compareall('x') == True:
+            print "----You win!---"
+            break:
     # Have computer randomly generate a place
     # create a loop
     openspot = True
@@ -38,6 +74,10 @@ while True:
         # if not o or x, the add o
         if board[computer] != 'o' and board[computer] != 'x':
             board[computer] = 'o'
+
+            if compareall('o')== True:
+                print "Computer Wins! You lose!"
+                break:
             #false to jump out of while loop 
             openspot = False
 
